@@ -1,0 +1,14 @@
+.pad {
+	padding: 0 !important;
+}
+
+btn {
+    border-radius: 0 !important;
+}
+
+.image {
+	background: url("BG.jpg") repeat scroll center center / cover;
+  height: 100vh;
+  width: 100%;
+}
+
