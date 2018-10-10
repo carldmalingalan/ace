@@ -97,6 +97,8 @@ function confirmActive(id){
                 data:{ activate : id }
             });
             dataTable.ajax.reload();
+            dataTable.ajax.reload();
+            dataTable.ajax.reload();
         }
     });
 }
