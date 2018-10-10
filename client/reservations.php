@@ -56,7 +56,11 @@ RunAlert();
                                                 <li><a href="javascript:void(0)">Edit</a></li>
                                             <?php endif; ?>
                                             <?php if(in_array($row['reservation_status'],array(1,2))):?>
-                                            <li><a href="javascript:void(0)">Cancel Reservation</a></li>
+                                            <form class="hide" id="cancel_form" action="cancel_reservation.php" method="POST">
+                                            <input type="hidden" name="reservation_id" id="reservation_id" value="<?php echo $row['reservation_id'] ?>">
+                                            </form>
+                                            <li><a href="javascript:void(0)" onclick="submitForm();">Cancel Reservation</a></li>
+                                            
                                             <?php endif; ?>
                                             </ul>
                                         </li>
@@ -160,6 +164,11 @@ RunAlert();
     </div>
 
 <script type="text/javascript">
+
+function submitForm(){
+var form = $('#cancel_form');
+form.submit();
+}
     $(document).ready(function() {
         
      $('.datepicker').bootstrapMaterialDatePicker({
