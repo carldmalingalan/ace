@@ -50,11 +50,23 @@
     
     <script type="text/javascript" src="<?php echo $dir; ?>assets/js/custom.js"></script>
     
-
-    
-
     <!-- Demo Js -->
     <script src="<?php echo $dir; ?>assets/js/demo.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+            $('#logout').on("click",function(){
+                $.ajax({
+                    url: "<?php echo $active_dir == 'admin' ? "" : "../"; ?>template-admin/deleteSess.php",
+                    success: data => {
+                        location.reload();
+                    }
+                });
+            });
+        });
+
+    </script>
 
 </body>
 </html>

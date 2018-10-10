@@ -2,6 +2,22 @@
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
+            <div class="user-info">
+                <div class="image">
+                    <img src="../images/user.png" width="48" height="48" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo cleanHTML($_SESSION[WEB]['name']); ?></div>
+                    <div class="email"><?php echo ucfirst(strtolower($_SESSION[WEB]['role_type'])); ?></div>
+                    <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <!-- <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li> -->
+                            <li><a href="javascript:void(0);" id="logout"><i class="material-icons">input</i>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
@@ -24,7 +40,7 @@
                                 <a href="<?php echo  $side_dir; ?>reservation/index.php">All Reservation</a>
                             </li>
                             <li class="<?php echo $active_sub_dir == "reservation_archive" ? "active" : "" ;?>">
-                                <a href="<?php echo  $side_dir; ?>reservation/index.php">Archive</a>
+                                <a href="<?php echo  $side_dir; ?>reservation/archived_reservation.php">Archive</a>
                             </li>
                         </ul>
                     <li class="<?php echo $active_dir == "transactions" ? "active": ""; ?>">
@@ -40,7 +56,7 @@
                                 <a href="<?php echo  $side_dir; ?>transaction/payment_records.php">Payment Records</a>
                             </li>
                             <li class="<?php echo $active_sub_dir == "transaction_archive" ? "active" : "" ;?>">
-                                <a href="<?php echo  $side_dir; ?>transaction/index.php">Archives</a>
+                                <a href="<?php echo  $side_dir; ?>transaction/transaction_archive.php">Archives</a>
                             </li>
                         </ul>
                     <li class="<?php echo $active_dir == "accounts" ? "active": ""; ?>">

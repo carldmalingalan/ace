@@ -251,7 +251,9 @@ RunAlert();
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-    
+    setInterval(function(){
+        checkArchive();
+    },3000);
     $('#showTrans').on("hidden.bs.modal",function(){
         $(this).find('[type="text"]').each(()=>{ $(this).val('') });
     });
@@ -393,6 +395,23 @@ var dt = $('#dataTable').dataTable({
         ]
         
 }).api();
+
+
+function checkArchive(){
+    var val = false;
+    $.ajax({
+        url: "ajax/generate_archive.php",
+        dataType: "HTML",
+        global: true,
+        async: false,
+        success : data => {
+            val = data;
+        }
+    });
+    if(val == true){
+        refreshDT();
+    }
+}
 
 function refreshDT(){
     dt.ajax.reload();

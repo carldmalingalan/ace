@@ -41,7 +41,7 @@ $active_sub_dir = empty($active_sub_dir) || !isset($active_sub_dir) ? "index" :$
     <!-- JQuery DataTable Css -->
     <link href="<?php echo $dir; ?>plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap4.min.css" rel="stylesheet">
      <!-- Custom Css -->
-     <link href="<?php echo $dir; ?>assets/css/style.min.css" rel="stylesheet">
+     <link href="<?php echo $dir; ?>assets/css/style.css" rel="stylesheet">
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="<?php echo $dir; ?>assets/css/themes/all-themes.css" rel="stylesheet" />
     

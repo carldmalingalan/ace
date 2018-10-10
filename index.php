@@ -3,7 +3,19 @@ $disable = "asd";
 require_once "support/config.php";
 require_once("template/header.php"); 
 	RunAlert();
-	unset($_SESSION[WEB]);
+	if(isset($_SESSION[WEB])){
+		switch($_SESSION[WEB]['role_type']){
+			case "ADMIN":
+			redirect('admin/index.php');
+			break;
+			case "MEMBER":
+			redirect("client");
+			break;
+			default:
+			unset($_SESSION[WEB]);
+			break;
+		}
+	}
 ?>
 
 <div class="limiter">
@@ -20,7 +32,7 @@ require_once("template/header.php");
 								</div>
 							</div>
                         </div>
-						<div class="wrap-input100 p-t-27 p-b-27">
+						<div class="wrap-input100 p-b-27">
 						<div class="form-group form-float">
 							<div class="form-line">
 							<input class="form-control" type="password" name="pass" placeholder="Password" required>

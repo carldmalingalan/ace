@@ -7,14 +7,13 @@ if(!AllowUser("Admin")){
 $active_dir ="reservation";
 $active_sub_dir = "reservation_index";
 $dir = "../../";
-$color = "blue";
+$color = "red";
 
 $rooms = $con->myQuery("SELECT * FROM room_type WHERE is_deleted = 0");
 $mop = $con->myQuery("SELECT * FROM mop WHERE is_deleted = 0");
 $res_stat = $con->myQuery("SELECT * FROM reservation_status WHERE is_deleted = 0");
 $room_available = $con->myQuery("SELECT A.room_id, A.room_number, B.room_name, B.room_type_id FROM rooms A JOIN room_type B ON A.room_type = B.room_type_id WHERE A.is_deleted = 0");
-// print_ar($room_available);
-// die;
+
 require_once "../template-admin/header.php";
 require_once "../template-admin/sidebar.php";
 RunAlert(); 
@@ -220,7 +219,7 @@ var dt = $('#dataTable').dataTable({
             }
         ]
         
-});
+}).api();
 
 function showInfo(id){
     $('#showReservation').modal({show:true});
@@ -244,6 +243,39 @@ function showInfo(id){
                     $('#assigned_room').selectpicker('refresh');
                 }
             });
+        }
+    });
+}
+
+function archiveInfo(id){
+    swal({
+        confirmButtonClass: "btn btn-danger waves-effect m-l-10",
+        cancelButtonClass: "btn btn-default waves-effect",
+        buttonsStyling: false,
+        title: "Are you sure?",
+        text:  "This record will be stored temporarly in archives.",
+        type:  "warning",
+        showCancelButton: true,
+        reverseButtons: true,
+        confirmButtonText:  "Confirm!",
+        cancelButtonText:   "Cancel"
+    }).then((isConfirm) => {
+        if(isConfirm.value){
+            swal({
+                showConfirmButton: false,
+                title: "Record Stored Success!",
+                type: "error",
+                timer: 2000
+            })
+            $.ajax({
+                url: "ajax/archive_rec.php",
+                method: "POST",
+                data:{ deact : id },
+                error: function(msg){console.log(msg.responseText)},
+                success : data => { console.log(data);}
+            });
+            dt.ajax.reload();
+            dt.ajax.reload();
         }
     });
 }

@@ -37,9 +37,6 @@
                     $action_buttons = "";
                     // if($row['status_name'] == "Pending"){
                     $action_buttons .= "<button type='button' class='btn btn-circle btn-primary waves-effect waves-float waves-circle' data-toggle='tooltip' data-placement='left' title='Payment info.' onclick='showTrans({$d})'><i class='material-icons'>mode_edit</i></button>";
-                    if($row['balance'] == 0){
-                        $action_buttons .=  "<button type='button' class='btn btn-circle m-l-5 btn-warning waves-effect waves-float waves-circle' data-toggle='tooltip' data-placement='left' title='Archive payment' ><i class='material-icons'>archive</i></button>                    ";
-                    }
                     
                     
                     // }

@@ -43,7 +43,12 @@ RunAlert();
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header"> 
-            <div class="pull-right"> <button type="button" class="btn btn-defautl waves-effect"><span class="fa fa-print"></span></button> </div>
+            <form action="print_payment.php" target="_blank" method="POST">
+            <div class="pull-right">
+            <input type="hidden" name="print_id" id="print_id" value ="">
+             <button type="submit" class="btn btn-defautl waves-effect waves-float waves-light" data-toggle="tooltip" data-placement="left" title="Print payment"><span class="fa fa-print"></span></button> 
+             </div>
+            </form>
             <h4 style="display:inline">Payment Information</h4>
             </div>
             <div class="modal-body row">

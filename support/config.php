@@ -108,6 +108,10 @@
 		 return htmlspecialchars("₱ " . number_format($peso,2,'.',','));
 	 }
 
+	 function cleanWoPeso($peso){
+		return htmlspecialchars(number_format($peso,2,'.',','));
+	 }
+
 	 function cleanDB($param){
 		 return rtrim($param);
 	 }

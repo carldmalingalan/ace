@@ -47,7 +47,8 @@
                 {
                     $action_buttons = "";
                     // if($row['status_name'] == "Pending"){
-                    $action_buttons .= "<button type='button' class='btn btn-sm btn-circle btn-success waves-effect' onclick='showInfo({$d})'><i class='material-icons'>build</i></button>";
+                    $action_buttons .= "<button type='button' class='btn m-l-5 m-t-5 btn-circle btn-success waves-float waves-circle waves-effect' onclick='showInfo({$d})'><i class='material-icons'>build</i></button>";
+                    $action_buttons .= "<button type='button' class='btn m-l-5 m-t-5 btn-circle bg-orange waves-float waves-circle waves-effect' onclick='archiveInfo({$d})'><i class='material-icons'>archive</i></button>";
                     // }
            
                     return $action_buttons;
@@ -77,7 +78,7 @@
             // $stmt->bindValueb   	qA@( $binding['key'], $binding['val'], $binding['type'] );
             $return_array[$bindings[$i]['key']]=$bindings[$i]['val'];
         }
-    }
+    } 
     return $return_array;
 }
 $where.= !empty($where) ? " AND ".$whereAll:"WHERE ".$whereAll;
