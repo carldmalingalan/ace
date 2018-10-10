@@ -3,12 +3,7 @@
     
 
     <script type="text/javascript" src="<?php echo $dir; ?>assets/js/bootstrap-datepicker.min.js"></script>
-    <script type="text/javascript" src="<?php echo $dir; ?>assets/js/input-mask/jquery.inputmask.js"></script>
-    <script type="text/javascript" src="<?php echo $dir; ?>assets/js/input-mask/jquery.inputmask.extensions.js"></script>
-    <script type="text/javascript" src="<?php echo $dir; ?>assets/js/input-mask/jquery.inputmask.date.extensions.js"></script>
-    <script type="text/javascript" src="<?php echo $dir; ?>assets/js/input-mask/jquery.inputmask.numeric.extensions.js"></script>
-    <script type="text/javascript" src="<?php echo $dir; ?>assets/js/input-mask/jquery.inputmask.phone.extensions.js"></script>
-    <script type="text/javascript" src="<?php echo $dir; ?>assets/js/input-mask/jquery.inputmask.regex.extensions.js"></script>
+    <script type="text/javascript" src="<?php echo $dir; ?>plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
     <script type="text/javascript" src="<?php echo $dir; ?>assets/fontawesome-5.1.1-web/js/all.min.js"></script>
     
 
@@ -54,5 +49,19 @@
     <!-- Demo Js -->
     <script src="<?php echo $dir; ?>assets/js/demo.js"></script>
 
+    <script>
+
+$(document).ready(function(){
+    $('#logout').on("click",function(){
+        $.ajax({
+            url: "<?php echo $active_dir == 'client' ? "" : "../"; ?>template-client/deleteSess.php",
+            success: data => {
+                location.reload();
+            }
+        });
+    });
+});
+
+</script>
 </body>
 </html>

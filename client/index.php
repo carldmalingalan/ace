@@ -1,6 +1,6 @@
 <?php
 require_once "../support/config.php";
-$active_dir = "index";
+$active_dir = "client";
 $dir = "../";
 $color = "red";
 // print_ar($_SESSION[WEB]);
