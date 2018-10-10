@@ -31,13 +31,13 @@
                         </a>
                         <ul class="ml-menu">
                         <li class="<?php echo $active_sub_dir == "reservations" ? "active" : "" ;?>">
-                                <a href="<?php echo  $side_dir; ?>client/reservations.php">Reservations</a>
+                                <a href="<?php echo  $side_dir; ?>reservations.php">Reservations</a>
                             </li>
                             <li class="<?php echo $active_sub_dir == "transactions" ? "active" : "" ;?>">
-                                <a href="<?php echo  $side_dir; ?>client/transactions.php">Transactions</a>
+                                <a href="<?php echo  $side_dir; ?>transactions.php">Transactions</a>
                             </li>
                             <li class="<?php echo $active_sub_dir == "settings" ? "active" : "" ;?>">
-                                <a href="<?php echo  $side_dir; ?>client/settings.php">Settings</a>
+                                <a href="<?php echo  $side_dir; ?>settings.php">Settings</a>
                             </li>
                         </ul>                    
                     </li>

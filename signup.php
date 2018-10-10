@@ -18,6 +18,7 @@ require_once "template/header.php";
         $inputs['re_pass'] = rtrim($inputs['re_pass']);
         $inputs['mobile_no'] = str_replace('+63 ','',$inputs['mobile_no']);
         $inputs['b_day'] = date_format(date_create($inputs['b_day']),'Y-m-d');
+        if(empty($inputs['m_name'])){ unset($inputs['m_name']); }
             unset($inputs['submit']);
             unset($inputs['submitBtn']);
         foreach($inputs as $val){
