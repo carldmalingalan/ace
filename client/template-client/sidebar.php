@@ -30,7 +30,10 @@
                             <span>My Account</span>
                         </a>
                         <ul class="ml-menu">
-                        <li class="<?php echo $active_sub_dir == "reservations" ? "active" : "" ;?>">
+                            <li class="<?php echo $active_sub_dir == "home" ? "active" : "" ;?>">
+                                <a href="<?php echo  $side_dir; ?>index.php">Home</a>
+                            </li>
+                            <li class="<?php echo $active_sub_dir == "reservations" ? "active" : "" ;?>">
                                 <a href="<?php echo  $side_dir; ?>reservations.php">Reservations</a>
                             </li>
                             <li class="<?php echo $active_sub_dir == "transactions" ? "active" : "" ;?>">
