@@ -72,7 +72,7 @@
                     <li class="<?php echo $active_dir == "metadata" ? "active": ""; ?>">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">folder</i>
-                            <span>Metadata</span>
+                            <span>Maintenance</span>
                         </a>              
                     <ul class="ml-menu">
                         <li class="<?php echo $active_sub_dir == "metadata_room" ? "active" : "" ;?>">
