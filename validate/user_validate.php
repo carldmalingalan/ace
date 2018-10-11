@@ -21,7 +21,7 @@ if(isset($_POST) && !empty($_POST)){
             die;
         }
         $_SESSION[WEB]['is_active'] = TRUE;
-        $_SESSION[WEB]['name'] = $val['f_name'] . " ".substr($val['m_name'],0,1).". ".$val['l_name'];
+        $_SESSION[WEB]['name'] = fullName($val['f_name'],$val['m_name'],$val['l_name']);
         $_SESSION[WEB]['id'] = $val['id'];
         $_SESSION[WEB]['role'] = encrypt_pass($val['user_role_id']);
         $_SESSION[WEB]['role_type'] = strtoupper($val['role_name']);

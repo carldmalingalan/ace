@@ -14,6 +14,7 @@
                         <ul class="dropdown-menu pull-right">
                             <!-- <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li> -->
                             <li><a href="javascript:void(0);" id="logout"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li><a href="settings.php"><i class="material-icons">settings</i>Settings</a></li>
                         </ul>
                     </div>
                 </div>
@@ -38,9 +39,6 @@
                             </li>
                             <li class="<?php echo $active_sub_dir == "transactions" ? "active" : "" ;?>">
                                 <a href="<?php echo  $side_dir; ?>transactions.php">Transactions</a>
-                            </li>
-                            <li class="<?php echo $active_sub_dir == "settings" ? "active" : "" ;?>">
-                                <a href="<?php echo  $side_dir; ?>settings.php">Settings</a>
                             </li>
                         </ul>                    
                     </li>
