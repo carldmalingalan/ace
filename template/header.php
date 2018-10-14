@@ -3,13 +3,7 @@ $dir = empty($dir) || !isset($dir) ? "" : $dir;
 $disable = empty($disable) || !isset($disable) ? TRUE : FALSE;
 $color = empty($color) || !isset($color) ? "red": $color;
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ace Water Spa Reservation</title>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
@@ -38,7 +32,7 @@ $color = empty($color) || !isset($color) ? "red": $color;
     <link href="<?php echo $dir; ?>plugins/jquery-spinner/css/bootstrap-spinner.css" rel="stylesheet">
 
     <!-- Custom Css -->
-    <link href="<?php echo $dir; ?>assets/css/style.min.css" rel="stylesheet">
+    <link href="<?php echo $dir; ?>assets/css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="<?php echo $dir; ?>assets/css/themes/all-themes.css" rel="stylesheet" />
@@ -62,5 +56,3 @@ $color = empty($color) || !isset($color) ? "red": $color;
     <script src="<?php echo $dir; ?>assets/js/pages/ui/tooltips-popovers.js"></script>
 
 
-</head>
-<body class="theme-<?php echo $color; ?>">

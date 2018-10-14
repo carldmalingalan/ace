@@ -1,9 +1,9 @@
 <?php 
 
-$dir = "./";
+$dir = "";
 $disable = "adf";
 require_once "support/config.php";
-require_once "template/header.php";
+
 
     RunAlert();
     if(isset($_POST) && isset($_POST['submitBtn'])){
@@ -46,104 +46,122 @@ require_once "template/header.php";
 
     }
 ?>
-<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="POST" action="" id="main_form">
-					<span class="login100-form-title p-b-34">
-						Account Register
-					</span>
-                        <div class="wrap-input100">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                <input class="form-control" placeholder="Username" id="username" type="text" name="username" required>
-                                </div>
-                            </div>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Sign Up | Ace Water Spa Reservation System</title>
+    <?php require_once "template/header.php"; ?>
+
+</head>
+
+<body class="signup-page">
+    <div class="signup-box">
+        <div class="logo">
+        <a href="index.php"><b>Ace Water Spa</b></a>
+            <small>Hotel Reservation System</small>
+        </div>
+        <div class="card">
+            <div class="body">
+                <form id="sign_up" method="POST" action="" class="validate-form">
+                    <div class="msg">Register a new membership</div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">account_circle</i>
+                        </span>
+                        <div class="form-line">
+                            <input class="form-control" placeholder="Username" id="username" type="text" name="username" required>
                         </div>
-                        <div class="wrap-input100">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input id="f_name" class="form-control" type="text" name="f_name" placeholder="First Name" required>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input id="f_name" class="form-control" type="text" name="f_name" placeholder="First Name" required>
                         </div>
-						<div class="wrap-input100">
-                        <div class="form-group form-float">
-                            <div class="form-line">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
                                 <input class="form-control" id="l_name" type="text" name="l_name" placeholder="Last Name" required>
-                            </div>
                         </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input class="form-control" id="m_name" type="text" name="m_name" placeholder="Middle Name">
                         </div>
-                        <div class="wrap-input100">
-                        <div class="form-group form-line">
-                            <div class="form-line">
-                                <input class="form-control" id="m_name" type="text" name="m_name" placeholder="Middle Name">
-                            </div>
-                        </div>
-                        </div>
-                        <div class="wrap-input100">
-                        <div class="form-group form-float">
-                            <div class=" input-group form-line">
+                    </div>
+                    <div class="input-group">
+                    <span class="input-group-addon"><i class="material-icons" style="cursor:pointer;" id="showPass">visibility_off</i></span>
+                        <div class="form-line">
                             <input class="form-control" id="pass" type="password" name="pass" placeholder="Password" required>
-                            <span class="input-group-addon"><i class="material-icons" style="cursor:pointer;" id="showPass">visibility</i></span>
-                            </div>
                         </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input class="form-control" id="re_pass" type="password" name="re_pass" placeholder="Re-type Password" required>
                         </div>
-                        <div class="wrap-input100">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                <input class="form-control" id="re_pass" type="password" name="re_pass" placeholder="Re-type Password" required>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">event</i>
+                        </span>
+                        <div class="form-line">
+                            <input class="form-control datepicker" id="b_day" type="text" name="b_day" placeholder="Birth Day" required>    
                         </div>
-                        <div class="wrap-input100">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                <input class="form-control datepicker" id="b_day" type="text" name="b_day" placeholder="Birth Day" required>    
-                                </div>
-                            </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">mail</i>
+                        </span>
+                        <div class="form-line">
+                            <input class="form-control" id="email" type="email" name="email" placeholder="Email" required>
                         </div>
-                        <div class="wrap-input100">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                <input class="form-control" id="email" type="email" name="email" placeholder="Email" required>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input class="form-control mob" id="mobile_no" type="text" name="mobile_no" placeholder="Mobile No." required>
                         </div>
-                        <div class="wrap-input100">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                <input class="form-control mob" id="mobile_no" type="text" name="mobile_no" placeholder="Mobile No." required>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">perm_identity</i>
+                        </span>
+                        <div class="form-line">
+                            <select name="sex" id="sex" class="form-control show-tick" title="Sex">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
                         </div>
-                        <div class="wrap-input100">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                    <select name="sex" id="sex" class="form-control show-tick" title="Sex">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select>
-                                    </div>
-                                </div>
-                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-green">
+                        <label for="terms">I read and agree to the <a href="javascript:void(0);">terms of usage</a>.</label>
+                    </div>
 
-                        <div class="container-login100-form-btn">
-                            <input type="hidden" name="submitBtn" value="create">
-                            <button class="btn btn-primary waves-effect m-r-30" id="submit" type="submit" name="submit">Register</button>
-                            <a href="index.php" class="btn btn-success waves-effect">Login</a>
-                        </div>
-				</form>
-
-				<div class="login100-more imgBG" style="background-image: url('assets/css/BGREG.jpg');"></div>
-			</div>
-		</div>
-	
+                    <button class="btn btn-block btn-lg bg-green waves-effect" type="submit">SIGN UP</button>
+                </form>
+            </div>
+        </div>
     </div>
-<?php require_once "template/footer.php";?>
-<script type="text/javascript">
-
-$(document).ready(function(){
+<?php require_once "template/footer.php"; ?>
+  
+<script>
+    $(document).ready(function(){
     $('#showPass').on("click",function(){
         var text = $(this).text(),
             pass = text == "visibility" ? "text" : "password";
@@ -161,7 +179,8 @@ $(document).ready(function(){
             'mobile_no' : {validateMobile:true,whiteSpaces:true},
             'f_name' : {whiteSpaces:true},
             'l_name' : {whiteSpaces:true},
-            'pass' : {whiteSpaces:true}
+            'pass' : {whiteSpaces:true},
+            'sex' : {required: true}
         },
         submitHandler : function(form) {
         $("button[type='submit']").attr('disabled',true).text('Updating user info...');
@@ -175,6 +194,7 @@ $(document).ready(function(){
         },
         errorPlacement: function (error, element) {
             $(element).parents('.form-group').append(error);
+            $(element).parents('.input-group').append(error);
         }
     });
 
@@ -212,5 +232,6 @@ $(document).ready(function(){
     }
 
 </script>
-<!-- <script type="text/javascript" src="ajax/ajax_signup.js"></script> -->
+</body>
 
+</html>

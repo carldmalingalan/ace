@@ -38,7 +38,7 @@ $pdf->Cell('95','5','Date Report Generated: '.date('F d, Y'),0,1,'L');
 $pdf->SetFont('Arial','I',15);
 $pdf->Cell('195','10',strtoupper(date('F'))." Sales Report",0,1,'C');
 $pdf->SetFont('Arial','',11);
-$pdf->Cell('65','5',"Month",1,0,'C');
+$pdf->Cell('65','5',"Day",1,0,'C');
 $pdf->Cell('65','5',"Sales",1,0,'C');
 $pdf->Cell('65','5',"Percentage",1,1,'C');
 

@@ -1,7 +1,7 @@
 <?php 
-$disable = "asd";
+
 require_once "support/config.php";
-require_once("template/header.php"); 
+
 	RunAlert();
 	if(isset($_SESSION[WEB])){
 		switch($_SESSION[WEB]['role_type']){
@@ -18,69 +18,90 @@ require_once("template/header.php");
 	}
 ?>
 
-<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="POST" action="validate/user_validate.php">
-					<span class="login100-form-title p-b-34">
-						Account Login
-					</span>
-                        <div class="wrap-input100">
-							<div class="form-group form-float">
-								<div class="form-line">
-									<input id="username" class="form-control" type="text" name="username" placeholder="Username" required>	
-								</div>
-							</div>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Sign in | Ace Water Spa Reservation System</title>
+    <!-- Favicon-->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    
+</head>
+
+<body class="login-page">
+    <div class="login-box">
+        <div class="logo">
+            <a href="index.php"><b>Ace Water Spa</b></a>
+            <small>Hotel Reservation System</small>
+        </div>
+        <div class="card">
+            <div class="body">
+                <form id="sign_in" action="validate/user_validate.php" method="POST">
+                    <div class="msg">Sign in to start your session</div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
                         </div>
-						<div class="wrap-input100 p-b-27">
-						<div class="form-group form-float">
-							<div class="form-line">
-							<input class="form-control" type="password" name="pass" placeholder="Password" required>
-							</div>
-						</div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" class="form-control" name="pass" placeholder="Password" required>
                         </div>
-					<div class="container-login100-form-btn">
-						<button type="submit" class="btn btn-block btn-primary waves-effect">
-							Sign in
-						</button>
-					</div>
+                    </div>
+                    
+                            <button class="btn btn-block bg-cyan waves-effect" type="submit">SIGN IN</button>
+                    <div class="row m-t-15 m-b--20">
+                        <div class="col-xs-12 align-center">
+                            <a href="signup.php">Register Now!</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-					<div class="w-full text-center p-t-27 p-b-10">
-						<span class="txt1">
-							Forgot
-						</span>
+    <!-- Jquery Core Js -->
+    <script src="plugins/jquery/jquery.min.js"></script>
 
-						<a href="#" class="text-primary">
-							Username / Password?
-						</a>
-					</div>
 
-					<div class="w-full text-center p-b-50">
-						<a href="signup.php" class="text-primary">
-							Sign Up
-						</a>
-					</div>
-				</form>
 
-				<div class="login100-more imgBG" style="background-image: url('assets/css/BG.jpg');"></div>
-			</div>
-		</div>
-	</div>
-<?php require_once "template/footer.php";?>
-<script type="text/javascript">
-	$('.validate-form').validate({
-		submitHandler : function(form) {
-        	$("button[type='submit']").attr('disabled',true).text('Logging in...');
-        	form.submit();
-        },
-        highlight: function (input) {
-            $(input).parents('.form-line').addClass('error');
-        },
-        unhighlight: function (input) {
-            $(input).parents('.form-line').removeClass('error');
-        },
-        errorPlacement: function (error, element) {
-            $(element).parents('.form-group').append(error);
-        }
-	});
-</script>
+    <!-- Bootstrap Core Js -->
+    <script src="plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="plugins/node-waves/waves.js"></script>
+
+    <!-- Validation Plugin Js -->
+    <script src="plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- Custom Js -->
+    <script src="assets/js/admin.js"></script>
+    <script src="assets/js/pages/examples/sign-in.js"></script>
+</body>
+
+</html>
