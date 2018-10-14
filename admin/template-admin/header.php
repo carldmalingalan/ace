@@ -61,6 +61,8 @@ $active_sub_dir = empty($active_sub_dir) || !isset($active_sub_dir) ? "index" :$
     
     <script src="<?php echo $dir; ?>plugins/jquery-datatable/jquery.dataTables.js"></script>
     <script src="<?php echo $dir; ?>plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap4.min.js"></script>
+     <!-- Chart Plugins Js -->
+     <script src="<?php echo $dir; ?>plugins/chartjs/Chart.bundle.js"></script>
     <!-- Wait Me Plugin Js -->
     <script src="<?php echo $dir; ?>plugins/waitme/waitMe.js"></script>
     <!-- Bootstrap Notify Plugin Js -->

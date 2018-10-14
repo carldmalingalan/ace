@@ -26,7 +26,7 @@
             if($table->rowCount() > 0){
                 $data['payment_details'] = "";
                 while($row = $table->fetch(PDO::FETCH_ASSOC)){
-                    $data['payment_details'] .= "<tr> <td>".cleanPeso($row['payment_total'])."</td> <td> ".date_format(date_create($row['payment_date']),"F d, Y h:i a")." </td> <td> <form> <input type='hidden' name='id' value='".$row['payment_id']."'> <button type='submit' class='btn btn-default waves-effect'> Print <span class='fa fa-print'></span> </button></form> </td> </tr>";
+                    $data['payment_details'] .= "<tr> <td>".cleanPeso($row['payment_total'])."</td> <td> ".date_format(date_create($row['payment_date']),"F d, Y h:i a")." </td> <td> <form method='POST' action='print_payment.php' target='_blank'> <input type='hidden' name='print_id' value='".$row['payment_id']."'> <button type='submit' class='btn btn-default waves-effect'> Print <span class='fa fa-print'></span> </button></form> </td> </tr>";
                 }
             }else{ $data['payment_details'] = "<tr><td colspan='3'> No Record Found. </td></tr>"; }
             

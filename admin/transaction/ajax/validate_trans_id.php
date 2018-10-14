@@ -9,7 +9,7 @@
                  B.m_name, B.l_name
                  FROM transaction A
                  JOIN users B ON A.user_id = B.id
-                 WHERE BINARY transaction_id = ? AND A.is_deleted = 0",array($_POST['id']));
+                 WHERE BINARY transaction_id = ?",array($_POST['id']));
             if($data->rowCount() == 1){
                 $data = $data->fetch(PDO::FETCH_ASSOC);
                 $data['m_name'] = empty($data['m_name']) ? "" : substr($data['m_name'],0,1).". ";

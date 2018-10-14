@@ -251,9 +251,9 @@ RunAlert();
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-    setInterval(function(){
-        checkArchive();
-    },3000);
+    // setInterval(function(){
+    //     checkArchive();
+    // },3000);
     $('#showTrans').on("hidden.bs.modal",function(){
         $(this).find('[type="text"]').each(()=>{ $(this).val('') });
     });
@@ -398,22 +398,24 @@ var dt = $('#dataTable').dataTable({
 
 
 function checkArchive(){
-    var val = false;
-    $.ajax({
-        url: "ajax/generate_archive.php",
-        dataType: "HTML",
-        global: true,
-        async: false,
-        success : data => {
-            val = data;
-        }
-    });
-    if(val == true){
-        refreshDT();
-    }
+    // var val = false;
+    // $.ajax({
+    //     url: "ajax/generate_archive.php",
+    //     dataType: "HTML",
+    //     global: true,
+    //     async: false,
+    //     success : data => {
+    //         val = data;
+    //     }
+    // });
+    // if(val == true){
+    //     refreshDT();
+    // }
 }
 
 function refreshDT(){
+    dt.ajax.reload();
+    dt.ajax.reload();
     dt.ajax.reload();
 }
 
@@ -451,6 +453,37 @@ function showTrans(id){
     });
 }
 
+function archiveTrans(id){
+    swal({
+        confirmButtonClass: "btn btn-danger waves-effect m-l-10",
+        cancelButtonClass: "btn btn-default waves-effect",
+        buttonsStyling: false,
+        title: "Are you sure?",
+        text:  "This record will be stored temporarly in archives.",
+        type:  "warning",
+        showCancelButton: true,
+        reverseButtons: true,
+        confirmButtonText:  "Confirm!",
+        cancelButtonText:   "Cancel"
+    }).then((isConfirm) => {
+        if(isConfirm.value){
+            swal({
+                showConfirmButton: false,
+                title: "Record Stored Success!",
+                type: "error",
+                timer: 2000
+            })
+            $.ajax({
+                url: "ajax/archive_trans.php",
+                method: "POST",
+                data:{ deact : id },
+                error: function(msg){console.log(msg.responseText)},
+                success : data => { console.log(data);}
+            });
+            refreshDT();
+        }
+    });
+}
 </script>
 
 <?php

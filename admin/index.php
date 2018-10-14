@@ -65,13 +65,80 @@ RunAlert();
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2 class="align-center"><?php echo date('Y'); ?> SALES REPORT</h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown toggle" data-toggle="dropdown" role="button" aria-haspop="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);">Print</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <canvas id="sales_monthly" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
 
 <script type="text/javascript">
+    var monthly = new Chart(document.getElementById('sales_monthly').getContext('2d'),getMonthly());
+        monthly.defaults.global.scaleLabel = "<%=parseInt(value).toLocaleString()%>";
+        monthly.defaults.global.tooltipTemplate = "<%if (label){%><%=label%>: <%}%><%=value.toLocaleString()%>";
+    function getMonthly(){
+        var dataS = [], label = [];
+        $.ajax({
+            url: "ajax/year_dash.php",
+            dataType: "JSON",
+            global : true,
+            async: false,
+            success : data => {
+                $.each(data,(index,elem)=>{
+                    dataS.push(elem);
+                    label.push(index);
+                });
+            }
+        });
+        var config = {
+            type: 'line',
+            data: {
+                labels: label,
+                datasets: [{
+                    label: "Total Sales",
+                    data: dataS,
+                    borderColor: 'rgba(0, 188, 212, 0.75)',
+                    backgroundColor: 'rgba(0, 188, 212, 0.3)',
+                    pointBorderColor: 'rgba(0, 188, 212, 0)',
+                    pointBackgroundColor: 'rgba(0, 188, 212, 0.9)',
+                    pointBorderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: true
+                // scales: {
+                //     yAxes: [{
+                //         ticks: {
+                //             beginAtZero: true
+                //         }
+                //     }]
+                // }
+            }
+        }
+        return config;
+        
+    }
     $(document).ready(() => {
+        getMonthly();
         setInterval(()=>{
             $.ajax({
                 url: "ajax/dashboard.php",

@@ -221,6 +221,12 @@ var dt = $('#dataTable').dataTable({
         
 }).api();
 
+function reloadDt(){
+    dt.ajax.reload();
+    dt.ajax.reload();
+    dt.ajax.reload();
+}
+
 function showInfo(id){
     $('#showReservation').modal({show:true});
     $.ajax({
@@ -274,8 +280,7 @@ function archiveInfo(id){
                 error: function(msg){console.log(msg.responseText)},
                 success : data => { console.log(data);}
             });
-            dt.ajax.reload();
-            dt.ajax.reload();
+            reloadDt();
         }
     });
 }

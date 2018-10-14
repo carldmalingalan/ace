@@ -53,7 +53,7 @@ RunAlert();
                                             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                             <ul class="dropdown-menu pull-right">
                                             <?php if($row['reservation_status'] == 1) : ?>
-                                                <li><a href="javascript:void(0)">Edit</a></li>
+                                                <li><a href="javascript:void(0)" onclick="editReservation(<?php echo $row['reservation_id']?>)">Edit</a></li>
                                             <?php endif; ?>
                                             <?php if(in_array($row['reservation_status'],array(1,2))):?>
                                             <form class="hide" id="cancel_form" action="cancel_reservation.php" method="POST">
@@ -103,7 +103,7 @@ RunAlert();
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <input type="text" class="form-control datepicker" name="checkin" id="checkin" required>
-                                            <input type="hidden" name="user_id" value="<?php echo $_SESSION[WEB]['id']?>">
+                                            <input type="hidden" name="save_id" id="save_id" value="">
                                             <input type="hidden" name="type" value="create">
                                         </div>
                                     </div>
@@ -118,9 +118,9 @@ RunAlert();
                                 </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <b>Number of Pax.</b>
-                            <div class="input-group form-group form-float spinner" data-trigger="spinner">
+                            <div class="input-group form-float spinner" data-trigger="spinner">
                                 <div class="form-line">
-                                <input type="text" name="pax" class="form-control numeric text-center" value="1" data-rule="quantity" data-max="50" data-min="1" required>
+                                <input type="text" name="pax" id="pax" class="form-control numeric text-center" value="1" data-rule="quantity" data-max="50" data-min="1" required>
                                 </div>
                                 <span class="input-group-addon">
                                             <a href="javascript:;" class="spin-up" data-spin="up"><i class="glyphicon glyphicon-chevron-up"></i></a>
@@ -155,7 +155,8 @@ RunAlert();
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-sm bg-<?php echo $color; ?> waves-effect" data-title="Checking info..">Reserve</button>
+                        <!-- <button type="submit" class="btn btn-sm bg-<?php echo $color; ?> waves-effect" data-title="Checking info..">Reserve</button> -->
+                        <input type="submit" name="type" class="btn bg-<?php echo $color?> waves-effect" data-title="Checking info.." value="Reserve">
                         <button class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
@@ -165,12 +166,42 @@ RunAlert();
 
 <script type="text/javascript">
 
+function editReservation(id){
+    var modal = $('#modalRes');
+    modal.modal({show:true});
+    modal.find('#checkout').attr({disabled:false});
+    modal.find('select').val('').selectpicker('refresh');
+    modal.find('input').val('');
+    modal.find('[type="submit"]').val('Update');
+    $.ajax({
+        url:  "ajax/fetch_reservation.php",
+        method: "POST",
+        data  : {res_id : id},
+        dataType: "JSON",
+        success : data => {
+            console.log(data);
+            $.each(data,(index,val) => {
+                $('#'+index).val(val).selectpicker('refresh');
+            })
+        }
+        // , error: msg => { console.log(msg.responseText)}
+    });
+}
+
+
 function submitForm(){
 var form = $('#cancel_form');
 form.submit();
 }
     $(document).ready(function() {
-        
+        $('#modalRes').on('hidden.bs.modal',function(){
+            $(this).find('#checkout').attr({disabled:true});
+            $(this).find('input').val('');
+            $(this).find('select').val('').selectpicker('refresh');
+            $(this).find('[type="submit"]').val('Reserve')
+            $(this).find('label.error').remove();
+            $(this).find('.error').removeClass('error');
+        });
      $('.datepicker').bootstrapMaterialDatePicker({
         format: 'MMMM DD, YYYY',
         clearButton: true,
