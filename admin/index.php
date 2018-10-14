@@ -75,13 +75,33 @@ RunAlert();
                                         <i class="material-icons">more_vert</i>
                                     </a>
                                     <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Print</a></li>
+                                        <li><a href="print_year.php" target="_blank">Print</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                         <div class="body">
                             <canvas id="sales_monthly" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2 class="align-center"><?php echo strtoupper(date('F')); ?> SALES REPORT</h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown toggle" data-toggle="dropdown" role="button" aria-haspop="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="print_month.php" target="_blank">Print</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <canvas id="sales_daily" height="150"></canvas>
                         </div>
                     </div>
                 </div>
@@ -92,8 +112,7 @@ RunAlert();
 
 <script type="text/javascript">
     var monthly = new Chart(document.getElementById('sales_monthly').getContext('2d'),getMonthly());
-        monthly.defaults.global.scaleLabel = "<%=parseInt(value).toLocaleString()%>";
-        monthly.defaults.global.tooltipTemplate = "<%if (label){%><%=label%>: <%}%><%=value.toLocaleString()%>";
+    var daily = new Chart(document.getElementById('sales_daily').getContext('2d'),getDaily());
     function getMonthly(){
         var dataS = [], label = [];
         $.ajax({
@@ -124,14 +143,57 @@ RunAlert();
             },
             options: {
                 responsive: true,
-                legend: true
-                // scales: {
-                //     yAxes: [{
-                //         ticks: {
-                //             beginAtZero: true
-                //         }
-                //     }]
-                // }
+                legend: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        }
+        return config;
+        
+    }
+    function getDaily(){
+        var dataS = [], label = [];
+        $.ajax({
+            url: "ajax/month_dash.php",
+            dataType: "JSON",
+            global : true,
+            async: false,
+            success : data => {
+                $.each(data,(index,elem)=>{
+                    dataS.push(elem);
+                    label.push(index);
+                });
+            }
+        });
+        var config = {
+            type: 'line',
+            data: {
+                labels: label,
+                datasets: [{
+                    label: "Total Sales",
+                    data: dataS,
+                    borderColor: 'rgba(233, 30, 99, 0.75)',
+                    backgroundColor: 'rgba(233, 30, 99, 0.3)',
+                    pointBorderColor: 'rgba(233, 30, 99, 0)',
+                    pointBackgroundColor: 'rgba(233, 30, 99, 0.9)',
+                    pointBorderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
         }
         return config;

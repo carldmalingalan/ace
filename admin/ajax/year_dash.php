@@ -20,7 +20,7 @@ $data = [
     "December" => 0,
 ];
 
-$currData = $con->myQuery('SELECT MONTHNAME(date_paid) As Month, SUM(fee) As Sales FROM transaction WHERE YEAR(date_paid) = "2018" AND balance = 0 GROUP BY MONTH(date_paid)')->fetchAll(PDO::FETCH_ASSOC);
+$currData = $con->myQuery('SELECT MONTHNAME(date_paid) As Month, SUM(fee) As Sales FROM transaction WHERE YEAR(date_paid) = "'.date('Y').'" AND balance = 0 GROUP BY MONTH(date_paid)')->fetchAll(PDO::FETCH_ASSOC);
 
 foreach($currData AS $key => $val){
     foreach($data AS $index => $element){
