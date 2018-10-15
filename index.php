@@ -1,8 +1,14 @@
-<?php 
+<!DOCTYPE html>
+<html>
 
-require_once "support/config.php";
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Sign in | Ace Water Spa Reservation System</title>
+    <?php 
+    require_once "template/header.php";
+    require_once "support/config.php";
 
-	RunAlert();
 	if(isset($_SESSION[WEB])){
 		switch($_SESSION[WEB]['role_type']){
 			case "ADMIN":
@@ -15,35 +21,9 @@ require_once "support/config.php";
 			unset($_SESSION[WEB]);
 			break;
 		}
-	}
-?>
-
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign in | Ace Water Spa Reservation System</title>
-    <!-- Favicon-->
-    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-    <!-- Bootstrap Core Css -->
-    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Waves Effect Css -->
-    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
-
-    <!-- Animation Css -->
-    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- Custom Css -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    }
+    RunAlert();
+    ?>
     
 </head>
 

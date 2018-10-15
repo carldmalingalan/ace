@@ -1,4 +1,13 @@
-<?php 
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Sign Up | Ace Water Spa Reservation System</title>
+    <?php require_once "template/header.php"; ?>
+    <?php 
 
 $dir = "";
 $disable = "adf";
@@ -18,7 +27,7 @@ require_once "support/config.php";
         $inputs['re_pass'] = rtrim($inputs['re_pass']);
         $inputs['mobile_no'] = str_replace('+63 ','',$inputs['mobile_no']);
         $inputs['b_day'] = date_format(date_create($inputs['b_day']),'Y-m-d');
-        if(empty($inputs['m_name'])){ unset($inputs['m_name']); }
+        $inputs['m_name'] = $inputs['m_name'] == "" ? '-' : $inputs['m_name'];
             unset($inputs['submit']);
             unset($inputs['submitBtn']);
         foreach($inputs as $val){
@@ -30,8 +39,12 @@ require_once "support/config.php";
             }
         }
         $inputs['pass'] = encrypt_pass($inputs['pass']);
+        $inputs['m_name'] = $inputs['m_name'] == "-" ? '' : $inputs['m_name'];
         unset($inputs['submit']);
         unset($inputs['re_pass']);
+        unset($inputs['terms']);
+        // print_ar($inputs);
+        // die;
         $con->beginTransaction();
         $exec = $con->myQuery("INSERT INTO users(username, password, f_name, l_name, m_name, b_day, email, mobile_no, sex) VALUES (:username, :pass, :f_name, :l_name, :m_name, :b_day, :email, :mobile_no, :sex)",$inputs);
         $con->commit();
@@ -40,21 +53,8 @@ require_once "support/config.php";
             redirect('index.php');
             die;
         }
-        
-        
-       
-
     }
-?>
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign Up | Ace Water Spa Reservation System</title>
-    <?php require_once "template/header.php"; ?>
-
+?>  
 </head>
 
 <body class="signup-page">
@@ -88,7 +88,7 @@ require_once "support/config.php";
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                                <input class="form-control" id="l_name" type="text" name="l_name" placeholder="Last Name" required>
+                            <input class="form-control" id="m_name" type="text" name="m_name" placeholder="Middle Name">
                         </div>
                     </div>
                     <div class="input-group">
@@ -96,7 +96,7 @@ require_once "support/config.php";
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input class="form-control" id="m_name" type="text" name="m_name" placeholder="Middle Name">
+                            <input class="form-control" id="l_name" type="text" name="l_name" placeholder="Last Name" required>
                         </div>
                     </div>
                     <div class="input-group">
@@ -154,7 +154,7 @@ require_once "support/config.php";
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <button class="btn btn-block btn-lg bg-green waves-effect waves-light" type="submit">SIGN UP</button>
+                            <input type="submit" class="btn btn-block btn-lg bg-green waves-effect waves-light" name="submitBtn" value="SIGN UP">
                         </div>
                         <div class="col-xs-6">
                             <a href="index.php" class="btn btn-block btn-lg bg-blue waves-effect waves-light"> LOGIN </a>
