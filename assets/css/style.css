@@ -2362,13 +2362,15 @@
     margin-left: 20px; } }
 
 /* General ===================================== */
+
 body {
   background-color: #e9e9e9;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  font-family: 'Roboto', Arial, Tahoma, sans-serif; }
+  font-family: 'Roboto', Arial, Tahoma, sans-serif; 
+}
 
 h1,
 h2,
@@ -7721,8 +7723,11 @@ fieldset[disabled] .form-control {
 /* Login Page ================================== */
 .login-page {
   /* background-color: #00BCD4; */
-  background: url('bg1.jpg') no-repeat center center;
-  background-size: cover;
+  background: url('bg1.jpg') no-repeat center center fixed;
+  background-size: 100% 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   padding-left: 0;
   max-width: 360px;
   margin: 5% auto;
@@ -7753,9 +7758,11 @@ fieldset[disabled] .form-control {
 /* Sign Up Page ================================ */
 .signup-page {
   /* background-color: #00BCD4; */
-  background-image: url('bg2.jpg');
-  background-repeat: no-repeat;
+  background: url('bg2.jpg') no-repeat center center fixed;
   background-size: 100% 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   height: auto;
   padding-left: 0;
   max-width: 360px;

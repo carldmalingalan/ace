@@ -152,8 +152,15 @@ require_once "support/config.php";
                         <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-green">
                         <label for="terms">I read and agree to the <a href="javascript:void(0);">terms of usage</a>.</label>
                     </div>
-
-                    <button class="btn btn-block btn-lg bg-green waves-effect" type="submit">SIGN UP</button>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button class="btn btn-block btn-lg bg-green waves-effect waves-light" type="submit">SIGN UP</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="index.php" class="btn btn-block btn-lg bg-blue waves-effect waves-light"> LOGIN </a>
+                        </div>
+                    </div>
+                    
                 </form>
             </div>
         </div>
