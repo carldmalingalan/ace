@@ -30,8 +30,9 @@ require_once "support/config.php";
         $inputs['m_name'] = $inputs['m_name'] == "" ? '-' : $inputs['m_name'];
             unset($inputs['submit']);
             unset($inputs['submitBtn']);
+            // || !valid_pass($inputs['pass'])
         foreach($inputs as $val){
-            if(empty($val) || $val == "" || $inputs['pass'] !== $inputs['re_pass'] || !valid_email($inputs['email']) || !valid_username($inputs['username']) || !valid_pass($inputs['pass'])){
+            if(empty($val) || $val == "" || $inputs['pass'] !== $inputs['re_pass'] || !valid_email($inputs['email']) || !valid_username($inputs['username'])){
                 $_SESSION['warning'] = TRUE;
                 Alert("Fill all required fields.","error","Invalid Fields.");
                 redirect('signup.php');

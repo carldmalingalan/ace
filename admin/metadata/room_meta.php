@@ -7,7 +7,7 @@ if(!AllowUser("Admin")){
 }
 $active_dir ="metadata";
 $active_sub_dir = "metadata_room";
-$color = "blue";
+$color = "brown";
 
 $rooms = $con->myQuery("SELECT * FROM room_type WHERE is_deleted = 0");
 

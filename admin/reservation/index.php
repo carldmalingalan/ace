@@ -7,7 +7,7 @@ if(!AllowUser("Admin")){
 $active_dir ="reservation";
 $active_sub_dir = "reservation_index";
 $dir = "../../";
-$color = "red";
+$color = "brown";
 
 $rooms = $con->myQuery("SELECT * FROM room_type WHERE is_deleted = 0");
 $mop = $con->myQuery("SELECT * FROM mop WHERE is_deleted = 0");

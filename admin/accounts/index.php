@@ -7,7 +7,7 @@ if(!AllowUser("Admin")){
 $active_dir ="accounts";
 $active_sub_dir = "account_index";
 $dir = "../../";
-$color = "blue";
+$color = "brown";
 require_once "../template-admin/header.php";
 require_once "../template-admin/sidebar.php";
 RunAlert(); 

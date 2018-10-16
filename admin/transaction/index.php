@@ -7,7 +7,7 @@ if(!AllowUser("Admin")){
 $active_dir ="transactions";
 $active_sub_dir = "transaction_index";
 $dir = "../../";
-$color = "red";
+$color = "brown";
 
 require_once "../template-admin/header.php";
 require_once "../template-admin/sidebar.php";

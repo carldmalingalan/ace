@@ -2,7 +2,7 @@
 require_once "../support/config.php";
 $active_dir = "client";
 $dir = "../";
-$color = "red";
+$color = "brown";
 if(!AllowUser("Member") || !isset($_SESSION[WEB])){
     redirect("../index.php");
     die;

@@ -7,7 +7,7 @@ if(!AllowUser("Admin")){
 }
 $active_dir ="metadata";
 $active_sub_dir = "metadata_roomtype";
-$color = "blue";
+$color = "brown";
 require_once "../template-admin/header.php";
 require_once "../template-admin/sidebar.php";
 RunAlert(); 

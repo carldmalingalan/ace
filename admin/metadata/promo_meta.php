@@ -7,7 +7,7 @@ if(!AllowUser("Admin")){
 }
 $active_dir ="metadata";
 $active_sub_dir = "metadata_promo";
-$color = "blue";
+$color = "brown";
 
 $foods = $con->myQuery("SELECT * FROM food_service WHERE is_deleted = 0");
 $rooms = $con->myQuery("SELECT * FROM room_type WHERE is_deleted = 0");

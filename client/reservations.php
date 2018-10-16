@@ -3,7 +3,7 @@ require_once "../support/config.php";
 $active_dir = "client";
 $active_sub_dir = "reservations";
 $dir = "../";
-$color = "red";
+$color = "brown";
 if(!AllowUser("Member") || !isset($_SESSION[WEB])){
     redirect("../index.php");
     die;
