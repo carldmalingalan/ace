@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">ace_system</database>
+</source>
+<canvas zoom="80">
+<tables>
+<table name="users" view="colnames">
+<left>688</left>
+<top>269</top>
+<width>248</width>
+<height>248</height>
+<sql_create_table>CREATE TABLE `users` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `f_name` varchar(255) DEFAULT NULL,
+  `l_name` varchar(255) DEFAULT NULL,
+  `m_name` varchar(255) DEFAULT NULL,
+  `b_day` date DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `mobile_no` bigint(20) DEFAULT NULL,
+  `sex` varchar(10) DEFAULT NULL,
+  `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `user_role_id` bigint(20) DEFAULT '2',
+  `is_newpass` int(1) DEFAULT '0',
+  `is_activated` bigint(1) DEFAULT '3',
+  `is_deleted` bigint(20) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `user_role_id` (`user_role_id`),
+  KEY `is_activated` (`is_activated`),
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_role_id`) REFERENCES `user_role` (`role_id`),
+  CONSTRAINT `users_ibfk_2` FOREIGN KEY (`is_activated`) REFERENCES `acc_status` (`status_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="user_role" view="colnames">
+<left>998</left>
+<top>245</top>
+<width>86</width>
+<height>103</height>
+<sql_create_table>CREATE TABLE `user_role` (
+  `role_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(255) DEFAULT NULL,
+  `is_deleted` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="transaction" view="colnames">
+<left>536</left>
+<top>5</top>
+<width>120</width>
+<height>248</height>
+<sql_create_table>CREATE TABLE `transaction` (
+  `transaction_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `reservation_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `checkin` date DEFAULT NULL,
+  `checkout` date DEFAULT NULL,
+  `stay_duration` time DEFAULT NULL,
+  `room_number` bigint(20) DEFAULT NULL,
+  `room_type` bigint(20) DEFAULT NULL,
+  `mop` bigint(20) DEFAULT NULL,
+  `fee` decimal(10,2) DEFAULT NULL,
+  `balance` decimal(10,2) DEFAULT NULL,
+  `date_paid` datetime DEFAULT NULL,
+  `received_id` bigint(20) DEFAULT NULL,
+  `is_deleted` int(1) DEFAULT '0',
+  PRIMARY KEY (`transaction_id`),
+  KEY `user_id` (`user_id`),
+  KEY `reservation_id` (`reservation_id`),
+  KEY `mop` (`mop`),
+  KEY `room_number` (`room_number`),
+  KEY `room_type` (`room_type`),
+  CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`reservation_id`) REFERENCES `account_reservations` (`reservation_id`),
+  CONSTRAINT `transaction_ibfk_3` FOREIGN KEY (`mop`) REFERENCES `mop` (`mop_id`),
+  CONSTRAINT `transaction_ibfk_4` FOREIGN KEY (`room_number`) REFERENCES `rooms` (`room_id`),
+  CONSTRAINT `transaction_ibfk_5` FOREIGN KEY (`room_type`) REFERENCES `room_type` (`room_type_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="account_reservations" view="colnames">
+<left>390</left>
+<top>286</top>
+<width>122</width>
+<height>212</height>
+<sql_create_table>CREATE TABLE `account_reservations` (
+  `reservation_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT NULL,
+  `checkin` date DEFAULT NULL,
+  `checkout` date DEFAULT NULL,
+  `pax` int(2) DEFAULT NULL,
+  `room_type` int(2) DEFAULT NULL,
+  `mop` bigint(2) DEFAULT NULL,
+  `reservation_status` bigint(20) DEFAULT '1',
+  `assigned_room` bigint(20) DEFAULT NULL,
+  `reservation_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `is_deleted` int(1) DEFAULT '0',
+  PRIMARY KEY (`reservation_id`),
+  KEY `user_id` (`user_id`),
+  KEY `mop` (`mop`),
+  KEY `assigned_room` (`assigned_room`),
+  CONSTRAINT `account_reservations_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `account_reservations_ibfk_2` FOREIGN KEY (`mop`) REFERENCES `mop` (`mop_id`),
+  CONSTRAINT `account_reservations_ibfk_3` FOREIGN KEY (`assigned_room`) REFERENCES `rooms` (`room_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="rooms" view="colnames">
+<left>779</left>
+<top>55</top>
+<width>102</width>
+<height>117</height>
+<sql_create_table>CREATE TABLE `rooms` (
+  `room_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `room_number` bigint(5) DEFAULT NULL,
+  `room_type` bigint(20) DEFAULT NULL,
+  `is_deleted` int(1) DEFAULT '0',
+  PRIMARY KEY (`room_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="mop" view="colnames">
+<left>192</left>
+<top>309</top>
+<width>96</width>
+<height>117</height>
+<sql_create_table>CREATE TABLE `mop` (
+  `mop_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `mop_name` varchar(255) DEFAULT NULL,
+  `mop_subtext` varchar(255) DEFAULT NULL,
+  `is_deleted` bigint(1) DEFAULT '0',
+  PRIMARY KEY (`mop_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="room_type" view="colnames">
+<left>923</left>
+<top>55</top>
+<width>104</width>
+<height>130</height>
+<sql_create_table>CREATE TABLE `room_type` (
+  `room_type_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `room_name` varchar(255) DEFAULT NULL,
+  `room_capacity` bigint(20) DEFAULT NULL,
+  `room_cost` decimal(10,2) DEFAULT NULL,
+  `is_deleted` bigint(1) DEFAULT '0',
+  PRIMARY KEY (`room_type_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="acc_status" view="colnames">
+<left>1001</left>
+<top>362</top>
+<width>95</width>
+<height>90</height>
+<sql_create_table>CREATE TABLE `acc_status` (
+  `status_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`status_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="payment_records" view="colnames">
+<left>172</left>
+<top>68</top>
+<width>122</width>
+<height>212</height>
+<sql_create_table>CREATE TABLE `payment_records` (
+  `payment_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `payee_id` bigint(20) DEFAULT NULL,
+  `transaction_id` bigint(20) DEFAULT NULL,
+  `reservation_id` bigint(20) DEFAULT NULL,
+  `fee` decimal(10,2) DEFAULT NULL,
+  `balance_total` decimal(10,2) DEFAULT NULL,
+  `payment_total` decimal(10,2) DEFAULT NULL,
+  `change_total` decimal(10,2) DEFAULT NULL,
+  `payment_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `payment_recipient` bigint(20) DEFAULT NULL,
+  `is_deleted` int(1) DEFAULT '0',
+  PRIMARY KEY (`payment_id`),
+  KEY `payee_id` (`payee_id`),
+  KEY `transaction_id` (`transaction_id`),
+  KEY `reservation_id` (`reservation_id`),
+  KEY `payment_recipient` (`payment_recipient`),
+  CONSTRAINT `payment_records_ibfk_1` FOREIGN KEY (`payee_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `payment_records_ibfk_2` FOREIGN KEY (`transaction_id`) REFERENCES `transaction` (`transaction_id`),
+  CONSTRAINT `payment_records_ibfk_3` FOREIGN KEY (`reservation_id`) REFERENCES `account_reservations` (`reservation_id`),
+  CONSTRAINT `payment_records_ibfk_4` FOREIGN KEY (`payment_recipient`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
