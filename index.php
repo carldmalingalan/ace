@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign in | Ace Water Spa Reservation System</title>
+    <title>Sign in | Hotel Reservation System</title>
     <?php 
     require_once "template/header.php";
     require_once "support/config.php";
@@ -30,8 +30,7 @@
 <body class="login-page">
     <div class="login-box">
         <div class="logo">
-            <a href="index.php"><b>Ace Water Spa</b></a>
-            <small>Hotel Reservation System</small>
+            <a href="index.php"><b>Hotel Reservation System</b></a>
         </div>
         <div class="card">
             <div class="body">

@@ -93,7 +93,7 @@ $active_sub_dir = empty($active_sub_dir) || !isset($active_sub_dir) ? "index" :$
             <div class="navbar-header">
                 <!-- <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a> -->
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="<?php echo $active_dir !== "admin" ? "../" : ""; ?>index.php">Ace Water Spa | Reservation System</a>
+                <a class="navbar-brand" href="<?php echo $active_dir !== "admin" ? "../" : ""; ?>index.php">Hotel Reservation System</a>
             </div>
         </div>
     </nav>    

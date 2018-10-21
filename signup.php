@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign Up | Ace Water Spa Reservation System</title>
+    <title>Sign Up | Hotel Reservation System</title>
     <?php require_once "template/header.php"; ?>
     <?php 
 
@@ -61,8 +61,7 @@ require_once "support/config.php";
 <body class="signup-page">
     <div class="signup-box">
         <div class="logo">
-        <a href="index.php"><b>Ace Water Spa</b></a>
-            <small>Hotel Reservation System</small>
+        <a href="index.php"><b>Hotel Reservation System</b></a>
         </div>
         <div class="card">
             <div class="body">

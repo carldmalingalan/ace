@@ -32,7 +32,7 @@ $pdf = new FPDF('P','mm','Letter');
 $pdf->AddPage();
 $pdf->SetTitle('Payment Record');
 $pdf->SetFont('Arial','I',16);
-$pdf->Cell('100','5','Ace Water Spa Reservation',0,1,'l');
+$pdf->Cell('100','5','Hotel Reservation System',0,1,'l');
 $pdf->SetFont('Arial','',11);
 $pdf->Cell('95','5','Date Report Generated: '.date('F d, Y'),0,1,'L');
 $pdf->SetFont('Arial','I',15);

@@ -134,7 +134,7 @@ RunAlert();
                                 <div class="form-line">
                                     <select name="room_type" id="room_type" class="form-control show-tick" title="Select a room type" required>
                                     <?php while($row = $rooms->fetch(PDO::FETCH_ASSOC)){
-                                        echo "<option value='{$row['room_type_id']}' data-subtext='Limit: {$row['room_capacity']}' data-token='{$row['room_capacity']}'>{$row['room_name']}</option>";
+                                        echo "<option value='{$row['room_type_id']}' data-subtext='Limit: {$row['room_capacity']}, Cost: ".cleanPeso($row['room_cost'])."' data-token='{$row['room_capacity']}' data-cost='{$row['room_cost']}'>{$row['room_name']}</option>";
 
                                     } ?>
                                     </select>
@@ -208,9 +208,9 @@ form.submit();
         weekStart: 1,
         time: false
     });
-    
+    // $('#checkin').bootstrapMaterialDatePicker('setMinData','<?php echo date('F d, Y'); ?>');
 $('#checkin').bootstrapMaterialDatePicker({weekStart: 0}).on("change",function(e,date){
-        var co = $('#checkout');
+        var co = $('#checkout');        
     if(date){
         co.attr('disabled', false);
         co.bootstrapMaterialDatePicker('setMinDate',date);

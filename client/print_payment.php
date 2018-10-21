@@ -30,7 +30,7 @@ $pdf = new FPDF('P','mm','Letter');
 $pdf->AddPage();
 $pdf->SetTitle('Payment Record');
 $pdf->SetFont('Arial','I',16);
-$pdf->Cell('100','5','Ace Water Spa Reservation',0,0,'l');
+$pdf->Cell('100','5','Hotel Reservation System',0,0,'l');
 $pdf->SetFont('Arial','',11);
 $pdf->Cell('95','5','Reciept No. : '.$details['payment_id'],0,1,'R');
 $pdf->Cell('20','5','Cashier',0,0,'L');
