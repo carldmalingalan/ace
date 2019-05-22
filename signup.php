@@ -44,8 +44,6 @@ require_once "support/config.php";
         unset($inputs['submit']);
         unset($inputs['re_pass']);
         unset($inputs['terms']);
-        // print_ar($inputs);
-        // die;
         $con->beginTransaction();
         $exec = $con->myQuery("INSERT INTO users(username, password, f_name, l_name, m_name, b_day, email, mobile_no, sex) VALUES (:username, :pass, :f_name, :l_name, :m_name, :b_day, :email, :mobile_no, :sex)",$inputs);
         $con->commit();

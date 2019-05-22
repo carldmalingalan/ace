@@ -1,10 +1,10 @@
 <?php
 require_once "../support/config.php";
 require_once "../support/fpdf.php";
-if(!AllowUser("Admin")){
-    redirect("../index.php");
-    die;
-}
+// if(!AllowUser("Admin")){
+//     redirect("../index.php");
+//     die;
+// }
 
 $data = [
     "January" => 0,
@@ -30,7 +30,11 @@ foreach($currData AS $key => $val){
         }
     }
 }
-$NETTotal = $con->myQuery('SELECT SUM(fee) As NET FROM transaction WHERE balance = 0 AND YEAR(date_paid) = "'.date('Y').'"')->fetch(PDO::FETCH_ASSOC);
+
+$dummy_date = "2018"
+
+// date('Y')
+$NETTotal = $con->myQuery('SELECT SUM(fee) As NET FROM transaction WHERE balance = 0 AND YEAR(date_paid) = "'.$dummy_date.'"')->fetch(PDO::FETCH_ASSOC);
 $NETTotal =  $NETTotal['NET'];
 // print_ar($details);
 // $hrs = explode(':',$details['stay_duration']);

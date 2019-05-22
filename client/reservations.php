@@ -134,8 +134,7 @@ RunAlert();
                                 <div class="form-line">
                                     <select name="room_type" id="room_type" class="form-control show-tick" title="Select a room type" required>
                                     <?php while($row = $rooms->fetch(PDO::FETCH_ASSOC)){
-                                        echo "<option value='{$row['room_type_id']}' data-subtext='Limit: {$row['room_capacity']}, Cost: ".cleanPeso($row['room_cost'])."' data-token='{$row['room_capacity']}' data-cost='{$row['room_cost']}'>{$row['room_name']}</option>";
-
+                                        echo "<option value='{$row['room_type_id']}' data-subtext='Limit: {$row['room_capacity']}, Cost: ".cleanPeso($row['room_cost'])."' data-token='{$row['room_capacity']}' data-cost='{$row['room_cost']}'> <img src ='image_carousel/{$row['room_image']}' height='15' width='15' style='border-radius : 20%;' > {$row['room_name']}</option>";
                                     } ?>
                                     </select>
                                 </div>

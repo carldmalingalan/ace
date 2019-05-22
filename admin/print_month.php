@@ -1,10 +1,10 @@
 <?php
 require_once "../support/config.php";
 require_once "../support/fpdf.php";
-if(!AllowUser("Admin")){
-    redirect("../index.php");
-    die;
-}
+// if(!AllowUser("Admin")){
+//     redirect("../index.php");
+//     die;
+// }
 
 $data = [];
 for($i=1;$i<32;$i++){
